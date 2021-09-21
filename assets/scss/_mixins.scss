@@ -1,0 +1,56 @@
+@use "sass:map";
+
+@mixin flex ($align: null, $justify: null, $direction: null){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+
+@mixin absolute($left, $top, $right: null, $bottom: null){
+    position: absolute;
+    left: $left;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+}
+
+@mixin adaptive($screen: null){
+    @if($screen == tablet){
+        @media screen and (max-width: 768px){
+            @content;
+        }
+    }@else if($screen == smartphone){
+        @media screen and (max-width: 576px){
+            @content;
+        }
+    }@else{
+        @media screen and (max-width: 360px){
+            @content; 
+        }
+    }
+}
+
+// $screens: (
+//     "laptop": 992px,
+//     "tablet": 768px,
+//     "mobile": 576px
+// );
+
+@mixin adaptive2($screen: null){
+    @if $screen != null{
+        @each $a, $b in $screens{
+            @if($screen == $a){
+                @media screen and (max-width: $b){
+                    @content;
+                }
+            }
+        }
+    }@else{
+        @media screen and (max-width: 360px){
+            @content;
+        }
+    }
+}
+
