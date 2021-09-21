@@ -11,7 +11,7 @@ body {
    display: flex;
    flex-direction: column;
 }
-._container {
+.container {
    max-width: $container-size + 30px;
    padding-inline: 15px;
    margin-inline: auto;
@@ -21,6 +21,19 @@ body {
    font-weight: $weight-bold;
    color: $color-main;
    text-transform: uppercase;
+}
+.btn {
+   display: inline-block;
+   padding: 4px 30px;
+   text-transform: uppercase;
+}
+.btn.btn-dark {
+   background-color: $color-main;
+   color: #fff;
+}
+.btn.btn-light {
+   background-color: #fff;
+   color: $color-main;
 }
 .header {
    background-color: #fff;
@@ -44,7 +57,6 @@ body {
          transition: 0.4s;
          box-shadow: 0px 0 24px -12px rgba($color: #000000, $alpha: 0.3);
       }
-      
    }
    .active {
       left: 0;
@@ -98,10 +110,10 @@ body {
       outline: none;
       font-size: $size-default;
       color: $color-main;
-      
-      @include m.adaptive (tablet) {
+
+      @include m.adaptive(tablet) {
          @include m.flex(center, center);
-         margin-left:40px;
+         margin-left: 40px;
          font-size: 20px;
       }
    }
@@ -115,5 +127,32 @@ body {
       &:not(:first-child) {
          margin-left: 40px;
       }
+   }
+}
+
+.offer {
+   height: 745px;
+   background: url(../img/offer-bg.jpg.png) 0 0 / cover no-repeat;
+   
+   @include m.adaptive(tablet) {
+      background: url(../img/offer-bg.jpg.png) 30% 50% / cover no-repeat;
+   }
+   
+   &__container {
+      height: 100%;
+   }
+   &__body {
+      @include m.flex(flex-end, flex-end);
+      height: 100%;
+      padding-bottom: 100px;
+      @include m.adaptive(tablet) {
+         @include m.flex(center, center);
+      }
+   }
+}
+.data-offer {
+   &__title {
+      font-size: 80px;
+      font-weight: bold;
    }
 }
